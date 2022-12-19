@@ -8,5 +8,4 @@ class InsertDescription :
         book_id = get_book_id()
         sql = f"""INSERT INTO description(book_id, description)
                 VALUES({book_id}, '{description}');"""
-        print(sql)
         InsertData.create_connection(sql)
