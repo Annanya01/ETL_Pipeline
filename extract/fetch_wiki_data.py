@@ -14,6 +14,4 @@ def get_description(book_title):
         InsertDescription.insert_description(desc)
 
     except Exception as e:
-        print(f"No description found for {book_title}")
-
-# get_description('A Passage to India')
+        print(f"No description found for {book_title}!")

@@ -4,8 +4,6 @@ from load import create_table
 
 
 class Database:
-    """PostgreSQL Database class."""
-
     def __init__(self):
         self.host = setting.POSTGRES_SERVER
         self.username = setting.POSTGRES_USER
@@ -16,7 +14,6 @@ class Database:
         self.cur = None
 
     def connect(self):
-        """Connect to a Postgres database."""
         if self.conn is None:
             try:
                 self.conn = psycopg2.connect(
@@ -31,7 +28,6 @@ class Database:
                 self.conn.commit()
                 
             except (Exception, psycopg2.DatabaseError) as error:
-                # print(error)
                 pass
         self.cur.close()
         return self.conn
@@ -48,7 +44,6 @@ class Database:
             except StopIteration:
                 break
             except Exception as error:
-                # print(error)
                 pass
 
     def insert_rows(self, query):

@@ -1,4 +1,3 @@
-from load.connection import Database
 from load.insert_data import InsertData, get_book_id
 
 class InsertDescription : 

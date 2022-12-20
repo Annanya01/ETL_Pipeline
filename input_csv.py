@@ -11,7 +11,8 @@ class InputData:
                 book_title = row[0]
                 print()
                 print('Book Title : ', book_title)
-                fetch_data.get_data(book_title)
+                fetch_data.get_api_data(book_title)
                 fetch_wiki_data.get_description(book_title)
+
         except:
             print("Can not find path of file")

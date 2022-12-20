@@ -4,23 +4,12 @@ class CreateTable:
     def create_table_books():
         command = '''CREATE TABLE books(
             id              SERIAL PRIMARY KEY,
-            publisher_id    INT,
             title           TEXT,
+            publisher       TEXT,
             page_count      INT,
             average_rating  NUMERIC DEFAULT 1.0,
-            sale_ability    VARCHAR(20),
-
-            FOREIGN KEY (publisher_id) REFERENCES publishers(id)
+            sale_ability    VARCHAR(20)
             );'''
-
-        return command
-
-    @staticmethod
-    def create_table_publishers():
-        command = '''CREATE TABLE publishers(
-                    id              SERIAL PRIMARY KEY,
-                    publisher_name  VARCHAR(100) NOT NULL
-                  );'''
 
         return command
 
@@ -80,7 +69,6 @@ class CreateTable:
 
 
 def create_tables():
-    yield CreateTable.create_table_publishers()
     yield CreateTable.create_table_books()
     yield CreateTable.create_table_authors()
     yield CreateTable.create_table_categories()

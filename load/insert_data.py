@@ -8,17 +8,9 @@ class InsertData:
         db_obj.insert_rows(sql)
 
     @staticmethod
-    def insert_publishers(publishers):
-        sql = f"""INSERT INTO publishers(publisher_name)
-                     VALUES('{publishers}');"""
-
-        InsertData.create_connection(sql)
-
-    @staticmethod
-    def insert_books(title, pageCount, saleability, averageRating = 1.0):
-        publisher_id = get_publisher_id()
-        sql = f"""INSERT INTO books(publisher_id, title, page_count, average_rating, sale_ability )
-                         VALUES({publisher_id}, '{title}', {int(pageCount)},  {averageRating} ,'{saleability}');"""
+    def insert_books(title, publisher, pageCount, saleability, averageRating = 1.0):
+        sql = f"""INSERT INTO books(title, publisher, page_count, average_rating, sale_ability )
+                         VALUES('{title}','{publisher}', {int(pageCount)},  {averageRating} ,'{saleability}');"""
         InsertData.create_connection(sql)
 
     @staticmethod
@@ -59,11 +51,6 @@ def get_id(sql):
     db_obj.conn.commit()
     cur.close()
     return id
-
-def get_publisher_id():
-    sql = f"""SELECT MAX(id) FROM publishers;"""
-    publisher_id = get_id(sql)
-    return publisher_id[0]
 
 def get_book_id():
     sql = f"""SELECT MAX(id) FROM books;"""
